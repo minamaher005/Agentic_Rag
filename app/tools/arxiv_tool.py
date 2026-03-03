@@ -1,0 +1,6 @@
+## first tool
+from langchain_community.tools import ArxivQueryRun,WikipediaQueryRun
+from langchain_community.utilities import WikipediaAPIWrapper,ArxivAPIWrapper
+
+api_wrapper_arxiv=ArxivAPIWrapper(top_k_results=2,doc_content_chars_max=500)
+arxiv=ArxivQueryRun(api_wrapper=api_wrapper_arxiv)
