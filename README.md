@@ -4,32 +4,7 @@ An agentic Retrieval-Augmented Generation (RAG) application built with **LangGra
 
 ## Architecture
 
-```
-User Question
-      │
-      ▼
-   ┌───────┐
-   │ Agent  │  ← Gemini 2.5 flash-lite (tool-calling LLM)
-   └───┬───┘
-       │ decides which tool(s) to call
-       ▼
-   ┌───────┐
-   │ Tools  │  ← Pinecone / Chroma retrievers, Arxiv, Tavily
-   └───┬───┘
-       │
-       ▼
- ┌────────────┐
- │  Grade Docs │  ← relevance check (structured output)
- └──┬──────┬──┘
-    │      │
-  relevant  not relevant
-    │      │
-    ▼      ▼
-Generator  Rewriter ──► back to Agent
-    │
-    ▼
-  Answer
-```
+![Workflow](output.png)
 
 The graph is compiled with **LangGraph** `StateGraph` and uses conditional edges for tool routing and document grading.
 
